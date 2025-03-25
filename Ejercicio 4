@@ -1,0 +1,60 @@
+# Definimos la clase Vehiculo
+class Vehiculo:
+    # Constructor para inicializar los atributos del vehículo
+    def __init__(self, marca, modelo, velocidad_maxima):
+        self.marca = marca  # Nombre del fabricante del vehículo
+        self.modelo = modelo  # Modelo del vehículo
+        self.velocidad_maxima = velocidad_maxima  # Límite máximo de velocidad
+        self.velocidad_actual = 0  # Velocidad inicial del vehículo (comienza en 0)
+
+    # Método para acelerar el vehículo
+    def acelerar(self, incremento):
+        if self.velocidad_actual + incremento <= self.velocidad_maxima:  # Verifica que no supere el límite
+            self.velocidad_actual += incremento  # Aumenta la velocidad
+            print(f"El vehículo aceleró. Velocidad actual: {self.velocidad_actual} km/h.")
+        else:
+            print(f"No se puede acelerar más allá de {self.velocidad_maxima} km/h.")  # Mensaje de límite alcanzado
+
+    # Método para frenar el vehículo
+    def frenar(self, decremento):
+        if self.velocidad_actual - decremento >= 0:  # Verifica que la velocidad no sea negativa
+            self.velocidad_actual -= decremento  # Reduce la velocidad
+            print(f"El vehículo frenó. Velocidad actual: {self.velocidad_actual} km/h.")
+        else:
+            self.velocidad_actual = 0  # La velocidad no puede ser menor que 0
+            print("El vehículo se detuvo. Velocidad actual: 0 km/h.")
+
+    # Método para verificar si se excede un límite de velocidad
+    def verificar_limite(self, velocidad_limite):
+        if self.velocidad_actual > velocidad_limite:  # Compara la velocidad actual con el límite dado
+            print(f"¡Cuidado! Estás superando el límite de velocidad de {velocidad_limite} km/h.")
+        else:
+            print(f"Estás dentro del límite de velocidad de {velocidad_limite} km/h.")
+
+# Crear un objeto Vehiculo con valores iniciales
+mi_vehiculo = Vehiculo("Toyota", "Corolla", 180)  # Ejemplo: marca Toyota, modelo Corolla, velocidad máxima 180 km/h
+
+# Menú interactivo
+while True:  # Bucle infinito para mostrar el menú
+    print("\n--- Menú de opciones ---")  # Opciones para interactuar con el programa
+    print("1. Acelerar")
+    print("2. Frenar")
+    print("3. Verificar límite de velocidad")
+    print("4. Salir")
+
+    opcion = input("Elige una opción: ")  # El usuario elige una opción
+
+    if opcion == "1":  # Opción para acelerar el vehículo
+        incremento = int(input("¿Cuánto deseas acelerar? (km/h): "))  # Solicita la cantidad a acelerar
+        mi_vehiculo.acelerar(incremento)  # Llama al método acelerar
+    elif opcion == "2":  # Opción para frenar el vehículo
+        decremento = int(input("¿Cuánto deseas frenar? (km/h): "))  # Solicita la cantidad a frenar
+        mi_vehiculo.frenar(decremento)  # Llama al método frenar
+    elif opcion == "3":  # Opción para verificar el límite de velocidad
+        limite = int(input("Introduce el límite de velocidad (km/h): "))  # Solicita el límite de velocidad
+        mi_vehiculo.verificar_limite(limite)  # Llama al método verificar_limite
+    elif opcion == "4":  # Opción para salir del programa
+        print("¡Hasta luego!")  # Mensaje de despedida
+        break  # Rompe el bucle para salir del programa
+    else:  # Mensaje para opción no válida
+        print("Opción no válida. Por favor, elige nuevamente.")
