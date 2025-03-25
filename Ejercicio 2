@@ -1,0 +1,23 @@
+# Definimos la clase Estudiante
+class Estudiante:
+    # Este es el constructor, que inicializa los atributos de un estudiante
+    def __init__(self, nombre, edad, calificacion):
+        self.nombre = nombre  # Atributo para almacenar el nombre del estudiante
+        self.edad = edad      # Atributo para almacenar la edad del estudiante
+        self.calificacion = calificacion  # Atributo para almacenar la calificación del estudiante
+
+    # Método para determinar si el estudiante aprobó o reprobó
+    def verificar_aprobacion(self):
+        if self.calificacion >= 3.0:  # Si la calificación es mayor o igual a 3.0
+            return "Aprobó"  # Retorna el mensaje de que el estudiante aprobó
+        else:  # Si la calificación es menor a 3.0
+            return "Reprobó"  # Retorna el mensaje de que el estudiante reprobó
+
+# Crear un objeto de la clase Estudiante con datos iniciales
+estudiante1 = Estudiante("Dylan, Smith", 19, 2.4)  # Ejemplo de estudiante que reprobó
+
+# Mostrar los datos del estudiante y su estado (aprobó o reprobó)
+print("Nombre:", estudiante1.nombre)  # Muestra el nombre del estudiante
+print("Edad:", estudiante1.edad)  # Muestra la edad del estudiante
+print("Calificación:", estudiante1.calificacion)  # Muestra la calificación del estudiante
+print("Resultado:", estudiante1.verificar_aprobacion())  # Muestra si aprobó o reprobó
