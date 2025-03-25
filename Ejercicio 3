@@ -1,0 +1,51 @@
+# Definimos la clase Producto
+class Producto:
+    # Constructor que inicializa los atributos del producto
+    def __init__(self, nombre, precio, stock):
+        self.nombre = nombre  # Atributo para almacenar el nombre del producto
+        self.precio = precio  # Atributo para almacenar el precio unitario del producto
+        self.stock = stock    # Atributo para almacenar la cantidad disponible en stock
+
+    # Método para verificar si hay suficiente stock
+    def verificar_disponibilidad(self, cantidad):
+        if self.stock >= cantidad:  # Comprueba si el stock es suficiente
+            return True  # Devuelve True si hay suficiente stock
+        else:
+            return False  # Devuelve False si no hay suficiente stock
+
+    # Método para vender una cierta cantidad de producto
+    def vender(self, cantidad):
+        if self.verificar_disponibilidad(cantidad):  # Verifica si hay stock suficiente
+            self.stock -= cantidad  # Reduce la cantidad en stock
+            print(f"Se vendieron {cantidad} unidades de {self.nombre}.")  # Muestra mensaje de venta exitosa
+        else:
+            print(f"No hay suficiente stock de {self.nombre} para vender {cantidad} unidades.")  # Muestra mensaje de error
+
+    # Método para reabastecer el stock del producto
+    def reabastecer(self, cantidad):
+        self.stock += cantidad  # Aumenta la cantidad en stock
+        print(f"Se reabastecieron {cantidad} unidades de {self.nombre}.")  # Muestra mensaje de reabastecimiento
+
+# Crear un objeto Producto con valores iniciales
+producto = Producto("Laptop", 1200, 10)  # Se crea el producto con nombre, precio y stock inicial
+
+# Verificar si hay 5 unidades disponibles
+print("¿Hay 5 unidades disponibles?", producto.verificar_disponibilidad(5))  # Devuelve True o False
+
+# Vender 3 unidades
+producto.vender(3)  # Intenta vender 3 unidades
+
+# Verificar si hay 8 unidades disponibles
+print("¿Hay 8 unidades disponibles?", producto.verificar_disponibilidad(8))  # Devuelve True o False
+
+# Intentar vender 8 unidades (debe fallar)
+producto.vender(8)  # Intenta vender 8 unidades, pero no hay suficiente stock
+
+# Reabastecer con 10 unidades adicionales
+producto.reabastecer(10)  # Aumenta el stock en 10 unidades
+
+# Verificar nuevamente si hay 8 unidades disponibles
+print("¿Hay 8 unidades disponibles?", producto.verificar_disponibilidad(8))  # Devuelve True o False
+
+# Vender 8 unidades
+producto.vender(8)  # Intenta vender 8 unidades
