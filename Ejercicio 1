@@ -1,0 +1,30 @@
+# Definimos la clase Libro
+class Libro:
+    # Constructor que inicializa los atributos del libro
+    def __init__(self, titulo, autor, numero_paginas):
+        self.titulo = titulo  # Atributo para el título del libro
+        self.autor = autor    # Atributo para el autor del libro
+        self.numero_paginas = numero_paginas  # Atributo para el número de páginas del libro
+
+    # Método para mostrar la información del libro
+    def mostrar_informacion(self):
+        print("Título:", self.titulo)  # Muestra el título del libro
+        print("Autor:", self.autor)    # Muestra el autor del libro
+        print("Número de páginas:", self.numero_paginas)  # Muestra el número de páginas del libro
+
+    # Método para actualizar el número de páginas
+    def actualizar_paginas(self, nuevas_paginas):
+        self.numero_paginas = nuevas_paginas  # Actualiza el número de páginas del libro
+        print("El número de páginas ha sido actualizado.")  # Informa que el cambio se realizó
+
+# Crear un objeto de la clase Libro
+mi_libro = Libro("El Principito", "Antoine de Saint-Exupéry", 96)  # Creamos un libro con valores iniciales
+
+# Mostrar la información del libro
+mi_libro.mostrar_informacion()
+
+# Actualizar el número de páginas del libro
+mi_libro.actualizar_paginas(100)
+
+# Mostrar la información del libro nuevamente para verificar el cambio
+mi_libro.mostrar_informacion()
